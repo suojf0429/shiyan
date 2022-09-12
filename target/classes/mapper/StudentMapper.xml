@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suo.pagetest.mapper.StudentMapper">
+
+
+    <select id="getStudent" resultType="com.suo.pagetest.entity.Student" parameterType="com.suo.pagetest.entity.Student">
+        select * from s_student
+        where
+        <if test="student.username!=null and student.username!=''">
+            username=#{student.username}
+        </if>
+        <if test="student.sn!=null and student.sn!=''">
+            and sn=#{student.sn}
+        </if>
+    </select>
+
+    <select id="getStudentList" resultType="com.suo.pagetest.entity.Student">
+        select * from s_student
+    </select>
+
+    <select id="getStudentByName" resultType="com.suo.pagetest.entity.Student">
+        select * from s_student where username=#{username}
+    </select>
+
+</mapper>
